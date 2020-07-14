@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "well-kato-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://well-kato.github.io/web/build",
   "eslintConfig": {
     "extends": "react-app"
   },
