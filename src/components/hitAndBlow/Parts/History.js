@@ -3,14 +3,16 @@ import { ImgList } from './ImgList';
 
 export function History(props) {
 
-    const historyRow = props.history.map((record, index) =>
+    let historyRow = props.history.map((record, index) =>
         <tr key={index}>
             <td>{index + 1}</td>
-            <td><ImgList size={35} array={record.selected} /></td>
+            <td><ImgList size={20} array={record.selected} /></td>
             <td>{record.hit}</td>
             <td>{record.blow}</td>
         </tr>
     );
+
+    historyRow.reverse();
     return (
         <div>
             <h2>履歴</h2>
@@ -24,9 +26,7 @@ export function History(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {historyRow}
-                    </tr>
+                    {historyRow}
                 </tbody>
             </table>
         </div>
