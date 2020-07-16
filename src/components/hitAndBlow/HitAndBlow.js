@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { GameTitle } from './GameTitle';
+import { GameTitle } from '../GameTitle';
 import { GameCount } from './Parts/GameCount';
 import { Judge } from './Parts/Judge';
 import { ImgList } from './Parts/ImgList';
