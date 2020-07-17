@@ -22,7 +22,7 @@ export class ModeSelect extends Component {
                     <div className="col-md-3"></div>
                     <div className="col-md-6">
                         <h1>モード選択</h1>
-                        <form action="/othello">
+                        <form action="othello">
                             <CommonSelect id="player1" label="先行" options={playerOptions} />
                             <CommonSelect id="player2" label="後攻" options={playerOptions} />
                             <CommonSelect id="matta" label="待った" options={mattaOptions} />
