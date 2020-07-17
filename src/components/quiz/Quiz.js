@@ -11,7 +11,9 @@ export class Quiz extends Component {
         super(props);
         this.state = {
             questionCount: 0,
-            correctCount: 0
+            correctCount: 0,
+            judge: -1,
+            selected: -1
         }
     }
 
@@ -28,32 +30,25 @@ export class Quiz extends Component {
         });
     }
 
-    handleChoiceClick(e) {
+    handleChoiceClick(e, choiceId) {
         let questionCount = this.state.questionCount;
         let correctCount = this.state.correctCount;
         const correct = parseInt(e.target.value);
-        const clicObject = e.target;
 
-        document.getElementsByClassName('quiz_area_bg')[0].style.display = 'block';
-        clicObject.classList.add('selected');
-
-        if (correct === 1) {
-            document.getElementsByClassName('quiz_area_icon')[0].classList.add('true');
-        } else {
-            document.getElementsByClassName('quiz_area_icon')[0].classList.add('false');
-        }
+        this.setState({
+            judge: correct,
+            selected: choiceId
+        });
 
         setTimeout(
             () => {
-                clicObject.classList.remove('selected');
-                document.getElementsByClassName('quiz_area_icon')[0].classList.remove('true', 'false');
-                document.getElementsByClassName('quiz_area_bg')[0].style.display = 'none';
                 questionCount++;
                 correctCount += correct;
 
                 this.setState({
                     questionCount: questionCount,
-                    correctCount: correctCount
+                    correctCount: correctCount,
+                    judge: -1
                 });
             }, 1500);
     }
@@ -71,6 +66,8 @@ export class Quiz extends Component {
         const sumQuestion = this.questionAndChoiceList.length;
         const numCorrect = this.state.correctCount;
         const questionCount = this.state.questionCount;
+        const judge = this.state.judge;
+        const selected = this.state.selected;
         let display;
 
         if (questionCount === 0) {
@@ -81,7 +78,8 @@ export class Quiz extends Component {
 
         } else {
             display = <QuizArea questionAndChoice={this.questionAndChoiceList[questionCount - 1]}
-                questionCount={questionCount} correctCount={numCorrect} onClick={(e) => this.handleChoiceClick(e)} />;
+                questionCount={questionCount} correctCount={numCorrect}
+                onClick={(e, choiceId) => this.handleChoiceClick(e, choiceId)} judge={judge} selected={selected} />;
         }
 
 
