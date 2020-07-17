@@ -1,0 +1,26 @@
+﻿.quiz_ans_area ul {
+    margin: 10px 0 0 0;
+    padding: 0;
+    display: block;
+}
+
+    .quiz_ans_area ul::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .quiz_ans_area ul li {
+        box-sizing: border-box;
+        list-style: none;
+        float: left;
+        width: 100%;
+        padding: 10px 15px;
+        border: 2px solid #CCC;
+        margin: 0 0 -2px 0;
+        cursor: pointer;
+    }
+
+        .quiz_ans_area ul li.selected {
+            background-color: #bcbcbc;
+        }

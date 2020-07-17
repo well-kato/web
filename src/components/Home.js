@@ -13,9 +13,10 @@ export class Home extends Component {
                             メニュー
                         </div>
                         <div className="list-group">
+                            <Link to="/quiz" className="list-group-item">QuizApp</Link>
                             <Link to="/hit-and-blow" className="list-group-item">Hit&Blow</Link>
                             <Link to="/blackjack" className="list-group-item">BlackJack</Link>
-                            <Link to="/othello-title" className="list-group-item">Othello</Link>
+                            <Link to="/othello" className="list-group-item">Othello</Link>
                         </div>
                     </div>
                 </div>
