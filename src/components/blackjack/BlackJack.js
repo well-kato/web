@@ -5,6 +5,7 @@ import { CustomButton } from './CustomButton';
 import { GameCount } from './GameCount';
 import { PlayerTip } from './PlayerTip';
 import { GameTitle } from '../GameTitle';
+import './blackjack.css';
 
 export class BlackJack extends Component {
     constructor(props) {
@@ -16,12 +17,8 @@ export class BlackJack extends Component {
             resultMessage: '',
             finalResultMessage: '',
             gameCount: 1,
-            playerTip: 50,
-            loading: true
+            playerTip: 50
         };
-    }
-
-    componentDidMount() {
         this.cardData();
     }
 
@@ -159,13 +156,8 @@ export class BlackJack extends Component {
     }
 
     render() {
-        if (this.state.loading) {
-            return (
-                <p><em>Loading...</em></p>
-            );
-        } else {
-            return (
-                <div className='row'>
+    return (
+                <div className='row blackjack'>
                     <div className='col-3'>
                         <GameTitle gameTitle='BlackJack'/>
                         <GameCount count={this.state.gameCount} />
@@ -189,25 +181,34 @@ export class BlackJack extends Component {
                     </div>
                 </div>
             );
-        }
+        
 
 
     }
 
     cardData() {
-        this.state= {
-            playerHand: [],
-            dealerHand: [],
-            deck: this.getCardDeck(),
-            resultMessage: ''
-        };
+        this.state.playerHand=[];
+        this.state.dealerHand=[];
+        this.state.deck=this.getCardDeck();
+        this.state.resultMessage='';
 
-        this.setState(this.dealCard(false));
-        this.setState(this.dealCard(false));
-
-        this.setState(this.dealCard(true));
-        this.setState(this.dealCard(true));
-        this.setState({ loading:false });
+        let kariDealCard;
+        kariDealCard=this.dealCard(false);
+        this.state.dealerHand=kariDealCard.dealerHand;
+        this.state.deck=kariDealCard.deck;
+        this.state.playerHand=kariDealCard.playerHand;
+        kariDealCard=this.dealCard(false);
+        this.state.dealerHand=kariDealCard.dealerHand;
+        this.state.deck=kariDealCard.deck;
+        this.state.playerHand=kariDealCard.playerHand;
+        kariDealCard=this.dealCard(true);
+        this.state.dealerHand=kariDealCard.dealerHand;
+        this.state.deck=kariDealCard.deck;
+        this.state.playerHand=kariDealCard.playerHand;
+        kariDealCard=this.dealCard(true);
+        this.state.dealerHand=kariDealCard.dealerHand;
+        this.state.deck=kariDealCard.deck;
+        this.state.playerHand=kariDealCard.playerHand;
     }
 
     getCardDeck() {
