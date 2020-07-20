@@ -37,5 +37,13 @@ export class ModeSelect extends Component {
 }
 
 function getGenreList(categoryId) {
-    return genre.filter(g => g.categoryId === categoryId);
+    let genreList = genre.filter(g => g.categoryId === categoryId);
+    genreList.unshift(
+        {
+            id: categoryId * -1,
+            categoryId: categoryId,
+            genreName: 'ランダム'
+        }
+    );
+    return genreList;
 }

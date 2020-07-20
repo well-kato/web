@@ -1,9 +1,17 @@
 ﻿import { question } from '../../data/question';
+import { genre } from '../../data/genre';
 import { choice } from '../../data/choice';
 
 
 export function getQuestionAndChoiceList(genreId, questionNo) {
-    let questionList = question.filter(q => q.genreId === genreId);
+    let questionList;
+
+    if (genreId < 0) {
+        const genreIdListInCategory = genre.filter(g => g.categoryId == genreId * -1).map(g => g.id);
+        questionList = question.filter(q => genreIdListInCategory.includes(q.genreId));
+    } else {
+        questionList = question.filter(q => q.genreId === genreId);
+    }
 
     questionList = shuffle(questionList).slice(0, questionNo);
 

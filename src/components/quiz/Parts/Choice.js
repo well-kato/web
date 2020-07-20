@@ -10,7 +10,7 @@ export function Choice(props) {
             className = 'alert alert-success';
 
         } else if (props.judge !== -1 && props.selected === c.id) {
-            className = 'selected';
+            className = 'alert alert-danger';
 
         } 
         return <li key={c.id} className={className} value={c.isCorrect} onClick={(e) => props.onClick(e, c.id)}>{c.choiceText}</li>

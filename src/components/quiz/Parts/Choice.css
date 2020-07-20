@@ -19,9 +19,9 @@
         border: 2px solid #CCC;
         margin: 0 0 -2px 0;
         cursor: pointer;
+        transition: .3s;
     }
 
-        .quiz_ans_area ul li.selected {
+        .quiz_ans_area ul li:active {
             background-color: #bcbcbc;
         }
-
